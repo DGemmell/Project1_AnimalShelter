@@ -34,7 +34,7 @@ class Owner
   def self.find(id)
     sql = "SELECT * from owners WHERE id = $1"
     values = [id]
-    row = SqlRunner.run(sql, values)[0]
+    row = SqlRunner.run(sql, values).first
     owner = Owner.new(row)
     return owner
   end
@@ -46,6 +46,13 @@ class Owner
     row = SqlRunner.run(sql, values)[0]
     animal = Animal.new(row)
     return animal
+  end
+
+  def animals()
+    sql = "SELECT * FROM animals WHERE owner_id = $1"
+    values = [@id]
+    rows = SqlRunner.run(sql, values)
+    return rows.map{|animal| Animal.new(animal) }
   end
 
 end

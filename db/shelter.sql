@@ -11,7 +11,7 @@ CREATE TABLE owners(
 CREATE TABLE animals(
 	id SERIAL8 primary key,
 	name VARCHAR(255),
-	reg_date DATE NOT NULL,
+	reg_date DATE,
   available BOOLEAN,
   owner_id INT8 REFERENCES owners(id)
 );

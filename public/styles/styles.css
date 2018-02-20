@@ -1,0 +1,9 @@
+body {
+  background: blue url('/images/IMG_5250.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: papayawhip;
+  font-family: 'arial', serif;
+  padding: 0px;
+  margin: 0px;
+}

@@ -1,0 +1,28 @@
+<h1>Update <%= @animal.name %></h1>
+
+<form action="/animals/<%= @animal.id %>" method="post">
+  <input type="hidden" name="name" value="<%=@animal.name %>"/>
+  <input type="hidden" name="reg_date" value="<%=@animal.reg_date %>"/>
+  <label for="available">available:</label>
+  <select value= "<%= @animal.available%>"name="available" id ="available">
+			<option value="t"
+      <%= "selected" if "t" == @animal.available %>>true
+      </option>
+      <option value="f"
+      <%= "selected" if "f" == @animal.available %>>false
+      </option>
+	</select>
+
+  <label for="owner">owner:</label>
+  <select name="owner_id">
+  <% for owner in @owners%>
+      <option value="<%= owner.id %>"><%= owner.name %></option>
+    <% end %>
+  </select>
+
+
+
+
+
+
+  <input type="submit" value= "Update animal" /> </form>

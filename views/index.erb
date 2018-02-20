@@ -1,5 +1,8 @@
 <h1>Animal Shelter</h1>
 
 <% for animal in @animals %>
-	<p>Animal name: <%= animal.name %></p>
+	<p>Animal name:<a href="/animals/<%= animal.id %>"><%= animal.name %></a></p>
+  <p>Registration Date: <%= animal.reg_date %></p>
+  <p>Available for Adoption: <%= animal.available %></p>
+  <p>Owner: <%= animal.owner_id%>
 <% end %>

@@ -1,10 +1,12 @@
+require('pry-byebug')
 require_relative("../db/sql_runner")
 
+
 class Animal
-	attr_reader :animal_id, :name, :reg_date, :available, :owner_id
+	attr_reader :id, :name, :reg_date, :available, :owner_id
 
 	def initialize(options)
-		@animal_id = options['id'].to_i
+		@id = options['id'].to_i
 		@name = options ['name']
     @reg_date = options ['reg_date']
     @available = options ['available']
@@ -18,22 +20,36 @@ end
   		"
   		values = [@name, @reg_date, @available, @owner_id]
   		animal = SqlRunner.run(sql, values)
-  		@animal_id = animal.first['animal_id'].to_i
+  		@id = animal.first['animal_id'].to_i
+  	end
+
+    def update()
+  		sql = "
+  		UPDATE animals SET (name, reg_date, available, owner_id)
+  		= ($1, $2, $3, $4) WHERE id= $5;
+  		"
+  		values = [@name, @reg_date, @available, @owner_id, @id]
+      SqlRunner.run( sql, values )
   	end
 
   	def self.all()
   		sql = "SELECT * FROM  animals;"
   		rows = SqlRunner.run(sql)
-  		all_animals = rows.map {|animal| Animal.new(animal) }
-  		return all_animals
+  		animal = rows.map {|animal| Animal.new(animal) }
+  		return animal
   	end
 
     def self.find(id)
-		sql = "SELECT * FROM animals WHERE animal_id = $1"
+		sql = "SELECT * FROM animals WHERE id = $1"
+        # binding.pry
 		values = [id]
-		row = SqlRunner.run(sql, values)[0]
+
+		row = SqlRunner.run(sql, values).first()
+    # binding.pry
 		animal = Animal.new(row)
-		return Animal
+    # binding.pry
+
+		return animal
 	  end
 
     def self.delete_all()
