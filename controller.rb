@@ -11,6 +11,7 @@ get "/animals" do
 	erb(:index)
 end
 
+
 #new animal
 get "/animals/new" do
 	@animals = Animal.all()
@@ -27,22 +28,15 @@ end
 
 #animal owner
 get "/animals/owner" do
-  @owners = Owner.all()
   @animals = Animal.all()
   erb(:showowner)
 end
 
-#update animal availability
-get "/animals/:id" do
-  @animal = Animal.find(params['id'])
-  @owner_id = @animal.owner_id
-  @available = [true, false]
-  erb(:updateanimal)
-end
-
+#update animal availability and owner
 get "/animals/:id" do
 @animal = Animal.find(params[:id])
-@owner_id = owner.id
+@owners = Owner.all()
+# @animal.owner.id
 erb(:updateanimal)
 end
 

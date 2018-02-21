@@ -1,14 +1,8 @@
 <h1>Our Lucky Owners</h1>
 
-<form action="/animals/owner" method="get">
+<% @animals.each do |animal| %>
+  <p>Owner: <%= animal.owner_id() %></p>
+  <p>Name: <%= animal.name() %></p>
 
-<% for owner in @owners %>
-<p>Name: <%= owner.name %></p>
-<p>Contact: <%= owner.contact %></p>
+
 <% end %>
-
-<% for animal in @animals %>
-<p>New family members: <%= animal.name %></p>
-<% end %>
-
-</form>
