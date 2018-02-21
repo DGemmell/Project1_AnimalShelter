@@ -57,7 +57,7 @@ end
 		SqlRunner.run(sql)
 	end
 
-  def owner(owner_id)
+  def owner()
 		sql = "SELECT * FROM owners WHERE id = $1"
 		values = [@owner_id]
 		row = SqlRunner.run(sql, values)[0]

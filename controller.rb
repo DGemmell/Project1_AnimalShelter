@@ -28,6 +28,7 @@ end
 
 #animal owner
 get "/animals/owner" do
+  @owners = Owner.all()
   @animals = Animal.all()
   erb(:showowner)
 end

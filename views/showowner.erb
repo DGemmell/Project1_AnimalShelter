@@ -1,8 +1,9 @@
 <h1>Our Lucky Owners</h1>
 
-<% @animals.each do |animal| %>
-  <p>Owner: <%= animal.owner_id() %></p>
-  <p>Name: <%= animal.name() %></p>
-
-
-<% end %>
+<% for owner in @owners %>
+<li>Name: <%= owner.name %></li>
+  <% pets = owner.animals %>
+  <% for pet in pets %>
+  <ul>Pet Name: <%= pet.name %></ul>
+    <% end %>
+    <% end %>

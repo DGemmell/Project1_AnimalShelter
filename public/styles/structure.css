@@ -1,9 +1,14 @@
 body {
-  background: grey url('/project1/IMG_5250.jpg');
+  background: white url('/images/IMG_5250.jpg');
   background-size: 100%;
+  background-position: :50% 50%;
   background-repeat: no-repeat;
-  color: blue;
-  font-family: 'arial', serif;
+  color: Blue;
+  font-family: 'sans', serif;
   padding: 0px;
   margin: 0px;
 }
+
+h1 {
+    text-align: center;
+  }
